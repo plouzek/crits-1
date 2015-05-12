@@ -70,9 +70,7 @@ class ServiceManager(object):
 
                         logger = logging.getLogger(services_pkg)
                         logger.addHandler(logging.StreamHandler())
-
-                        if settings.DEBUG is True:
-                            logger.setLevel(logging.DEBUG)
+                        logger.setLevel(settings.LOG_LEVEL)
 
     def _register_services(self, klass):
         """
