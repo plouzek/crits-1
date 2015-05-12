@@ -68,6 +68,12 @@ class ServiceManager(object):
                             logger.warning("Failed to import service (%s): %s" %
                                             (services_pkg, e))
 
+                        logger = logging.getLogger(services_pkg)
+                        logger.addHandler(logging.StreamHandler())
+
+                        if settings.DEBUG is True:
+                            logger.setLevel(logging.DEBUG)
+
     def _register_services(self, klass):
         """
         Create a dict with names of available services and classes that
